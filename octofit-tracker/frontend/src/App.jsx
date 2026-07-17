@@ -1,14 +1,23 @@
 import { Link, Route, Routes } from 'react-router-dom'
+import Activities from './components/Activities'
+import Leaderboard from './components/Leaderboard'
+import Teams from './components/Teams'
+import Users from './components/Users'
+import Workouts from './components/Workouts'
 import './App.css'
 
 function App() {
   return (
     <div className="app-shell">
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-4">
-        <a className="navbar-brand fw-bold" href="/">OctoFit Tracker</a>
-        <div className="ms-auto">
-          <Link className="nav-link d-inline text-white" to="/">Home</Link>
-          <Link className="nav-link d-inline text-white ms-3" to="/insights">Insights</Link>
+        <Link className="navbar-brand fw-bold" to="/">OctoFit Tracker</Link>
+        <div className="ms-auto d-flex gap-3">
+          <Link className="nav-link text-white" to="/">Home</Link>
+          <Link className="nav-link text-white" to="/users">Users</Link>
+          <Link className="nav-link text-white" to="/teams">Teams</Link>
+          <Link className="nav-link text-white" to="/activities">Activities</Link>
+          <Link className="nav-link text-white" to="/leaderboard">Leaderboard</Link>
+          <Link className="nav-link text-white" to="/workouts">Workouts</Link>
         </div>
       </nav>
 
@@ -24,7 +33,7 @@ function App() {
                     Log workouts, collaborate with teammates, and keep your leaderboard moving in real time.
                   </p>
                   <div className="d-flex gap-3 mt-4">
-                    <Link className="btn btn-primary" to="/insights">View insights</Link>
+                    <Link className="btn btn-primary" to="/leaderboard">Open leaderboard</Link>
                     <a className="btn btn-outline-secondary" href="http://localhost:8000/api/health" target="_blank" rel="noreferrer">Check API</a>
                   </div>
                 </div>
@@ -43,17 +52,11 @@ function App() {
               </section>
             }
           />
-          <Route
-            path="/insights"
-            element={
-              <section className="card shadow-sm border-0 p-4">
-                <h2 className="h3">Performance insights</h2>
-                <p className="text-muted">
-                  This React layer is now connected to a Vite development experience and a TypeScript Express API.
-                </p>
-              </section>
-            }
-          />
+          <Route path="/users" element={<Users />} />
+          <Route path="/teams" element={<Teams />} />
+          <Route path="/activities" element={<Activities />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/workouts" element={<Workouts />} />
         </Routes>
       </main>
     </div>
